@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Panel Page for Hymns</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Paul Panel Page for Hymns</h1>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search Hymns...">
+            <button id="searchButton">Search</button>
+        </div>
+    </header>
+
+    <main id="hymnList">
+        <!-- Hymn Items Will Be Inserted Here by JavaScript -->
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#searchButton {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+.hymn-card {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+        audio: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3"
+    },
+    { 
+        title: "How Great Thou Art", 
+        lyrics: "O Lord my God! When I in awesome wonder...",
+        audio: "https://www.sample-videos.com/audio/mp3/wave.mp3"
+    }
+];
+
+// Function to Display Hymns
+function displayHymns(filter = "") {
+    const hymnList = document.getElementById("hymnList");
+    hymnList.innerHTML = ""; // Clear previous hymns
+
+    const filteredHymns = hymns.filter(hymn => hymn.title.toLowerCase().includes(filter.toLowerCase()));
+
+    if (filteredHymns.length === 0) {
+        hymnList.innerHTML = `<p>No hymns found.</p>`;
+        return;
+    }
+
+    filteredHymns.forEach(hymn => {
+        const hymnCard = document.createElement("div");
+        hymnCard.classList.add("hymn-card");
+        hymnCard.innerHTML = `
+            <h2>${hymn.title}</h2>
+            <p>${hymn.lyrics}</p>
+            <audio controls>
+                <source src="${hymn.audio}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        `;
+        hymnList.appendChild(hymnCard);
+    });
+}
+
+// Search Functionality (Trigger Search on Button Click)
+document.getElementById("searchButton").addEventListener("click", () => {
+    const searchTerm = document.getElementById("searchBar").value;
+    displayHymns(searchTerm);
+});
+
+// Initial Load
+displayHymns();
+https://your-username.github.io/hymns-web-app/
